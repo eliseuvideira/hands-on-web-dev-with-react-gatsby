@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren } from 'react';
 
-type Props = PropsWithChildren<{ title: string; subtitle: string }>
+type Props = PropsWithChildren<{ title: string; subtitle: string }>;
 
 const Layout: React.FC<Props> = ({ title, subtitle, children }) => {
   return (
@@ -12,7 +12,7 @@ const Layout: React.FC<Props> = ({ title, subtitle, children }) => {
       <main>{children}</main>
       <footer>© {new Date().getFullYear()}, Rachelle Rathbone</footer>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

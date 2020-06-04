@@ -1,5 +1,5 @@
-import React from "react"
-import Layout from "../components/layout"
+import React from 'react';
+import Layout from '../components/layout';
 
 const BlogIndex: React.FC = () => (
   <Layout title="Starter Blog" subtitle="Built with React and Gatsby">
@@ -12,7 +12,7 @@ const BlogIndex: React.FC = () => (
             Cheese and wine rubber cheese airedale cottage cheese the big cheese
             stinking bishop cheesecake st. agur blue cheese. Cow rubber cheese
             cheese triangles say cheese cheese on toast cheddar red leicester
-            swiss.{" "}
+            swiss.{' '}
           </p>
           <button>Read more</button>
         </div>
@@ -39,6 +39,6 @@ const BlogIndex: React.FC = () => (
       </aside>
     </div>
   </Layout>
-)
+);
 
-export default BlogIndex
+export default BlogIndex;
