@@ -15,7 +15,6 @@ const typography = new Typography({
   bodyFontFamily: ["Open Sans", "Georgia", "serif"],
 })
 
-// Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
   typography.injectStyles()
 }

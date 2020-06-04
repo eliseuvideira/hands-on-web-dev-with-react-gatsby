@@ -1,6 +1,8 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 
-export default function Layout({ title, subtitle, children }) {
+type Props = PropsWithChildren<{ title: string; subtitle: string }>
+
+const Layout: React.FC<Props> = ({ title, subtitle, children }) => {
   return (
     <div className="app-container">
       <header>
@@ -12,3 +14,5 @@ export default function Layout({ title, subtitle, children }) {
     </div>
   )
 }
+
+export default Layout
