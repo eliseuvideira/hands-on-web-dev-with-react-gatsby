@@ -1,8 +1,10 @@
 import React from 'react';
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const BlogIndex: React.FC = () => (
   <Layout title="Starter Blog" subtitle="Built with React and Gatsby">
+    <SEO title="All Posts" lang="en" description="An list of all posts" />
     <div className="blog-container">
       <section>
         <div className="post-summary">
