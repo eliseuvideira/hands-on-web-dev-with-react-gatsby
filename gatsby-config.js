@@ -6,6 +6,7 @@ module.exports = {
     social: {
       github: 'eliseuvideira',
     },
+    siteUrl: 'http://localhost:9000',
   },
   plugins: [
     {
@@ -35,5 +36,20 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: '',
+        head: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: '',
+        includeInDevelopment: true,
+      },
+    },
   ],
 };
