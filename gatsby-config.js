@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: 'Starter Blog',
-    author: 'Rachelle Rathbone',
+    author: 'Eliseu Videira',
     description: 'A blog that shows you the awesome power of gatsby.',
     social: {
-      twitter: 'coding_love',
+      github: 'eliseuvideira',
     },
   },
   plugins: [
