@@ -17,6 +17,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/posts`,
+        name: 'posts',
+      },
+    },
+    'gatsby-transformer-remark',
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Starter Blog',
