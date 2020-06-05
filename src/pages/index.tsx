@@ -1,9 +1,35 @@
 import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import { graphql } from 'gatsby';
 
-const BlogIndex: React.FC = () => (
-  <Layout title="Starter Blog" subtitle="Built with React and Gatsby">
+export const query = graphql`
+  {
+    site {
+      siteMetadata {
+        title
+        author
+      }
+    }
+  }
+`;
+
+interface Props {
+  data: {
+    site: {
+      siteMetadata: { title: string; author: string };
+    };
+  };
+}
+
+const BlogIndex: React.FC<Props> = ({
+  data: {
+    site: {
+      siteMetadata: { title, author },
+    },
+  },
+}) => (
+  <Layout title={title} subtitle="Built with React and Gatsby">
     <SEO title="All Posts" lang="en" description="An list of all posts" />
     <div className="blog-container">
       <section>
@@ -31,7 +57,7 @@ const BlogIndex: React.FC = () => (
       </section>
       <aside>
         <p>We&apos;ll put a profile pic here later</p>
-        <h3>Rachelle Rathbone</h3>
+        <h3>{author}</h3>
         <p>
           Goat gouda who moved my cheese. Red leicester edam port-salut cream
           cheese pepper jack halloumi jarlsberg mozzarella. Boursin cheese
