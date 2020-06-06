@@ -33,6 +33,8 @@ module.exports = {
         ],
       },
     },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -64,7 +66,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: '',
+        id: 'GTM-P3RRQHF',
         includeInDevelopment: true,
       },
     },
