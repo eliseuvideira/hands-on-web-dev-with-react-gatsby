@@ -9,6 +9,14 @@ export const query = graphql`
       siteMetadata {
         title
         author
+        bio
+      }
+    }
+    profilePic: file(absolutePath: { regex: "/profile.png/" }) {
+      childImageSharp {
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }
@@ -17,16 +25,18 @@ export const query = graphql`
 interface Props {
   data: {
     site: {
-      siteMetadata: { title: string; author: string };
+      siteMetadata: { title: string; author: string; bio: string };
     };
+    profilePic: any;
   };
 }
 
 const BlogIndex: React.FC<Props> = ({
   data: {
     site: {
-      siteMetadata: { title, author },
+      siteMetadata: { title, author, bio },
     },
+    profilePic,
   },
 }) => (
   <Layout title={title} subtitle="Built with React and Gatsby">
@@ -56,14 +66,10 @@ const BlogIndex: React.FC<Props> = ({
         </div>
       </section>
       <aside>
-        <p>We&apos;ll put a profile pic here later</p>
+        {console.log(profilePic)}
+        <img src={profilePic.childImageSharp.fluid.src} alt="profile-picture" />
         <h3>{author}</h3>
-        <p>
-          Goat gouda who moved my cheese. Red leicester edam port-salut cream
-          cheese pepper jack halloumi jarlsberg mozzarella. Boursin cheese
-          strings manchego bocconcini croque monsieur cheese slices the big
-          cheese fromage.
-        </p>
+        <p>{bio}</p>
       </aside>
     </div>
   </Layout>

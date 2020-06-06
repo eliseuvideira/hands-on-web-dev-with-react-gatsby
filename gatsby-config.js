@@ -3,6 +3,7 @@ module.exports = {
     title: 'Starter Blog',
     author: 'Eliseu Videira',
     description: 'A blog that shows you the awesome power of gatsby.',
+    bio: 'Nodejs dev',
     social: {
       github: 'eliseuvideira',
     },
