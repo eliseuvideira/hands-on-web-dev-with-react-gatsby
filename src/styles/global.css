@@ -1,9 +1,3 @@
-.app-container {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2em 2em 1em 2em;
-}
-
 header {
   border-bottom: 1px solid lightgrey;
   display: block;
@@ -32,23 +26,6 @@ footer {
   margin-top: 1em;
 }
 
-/* ***********************************
-MEDIA QUERIES
-*********************************** */
-@media (max-width: 991px) {
-  .app-container {
-    padding: 2em 5em;
-  }
-}
-
-/* iPhone6Plus */
-@media (max-width: 414px) {
-  .app-container {
-    padding: 2em 3em;
-  }
-}
-
-/* iPhone4 */
 @media (max-width: 320px) {
   header {
     padding: 0.5em 0;
