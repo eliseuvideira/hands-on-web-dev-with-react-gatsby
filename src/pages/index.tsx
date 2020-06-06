@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
 export const query = graphql`
   {
@@ -15,7 +16,7 @@ export const query = graphql`
     profilePic: file(absolutePath: { regex: "/profile.png/" }) {
       childImageSharp {
         fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
@@ -66,8 +67,7 @@ const BlogIndex: React.FC<Props> = ({
         </div>
       </section>
       <aside>
-        {console.log(profilePic)}
-        <img src={profilePic.childImageSharp.fluid.src} alt="profile-picture" />
+        <Image fluid={profilePic.childImageSharp.fluid} alt={author} />
         <h3>{author}</h3>
         <p>{bio}</p>
       </aside>
