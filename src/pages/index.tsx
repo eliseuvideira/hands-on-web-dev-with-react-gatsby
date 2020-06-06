@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 
 export const query = graphql`
@@ -11,6 +11,22 @@ export const query = graphql`
         title
         author
         bio
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          html
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+          }
+        }
       }
     }
     profilePic: file(absolutePath: { regex: "/profile.png/" }) {
@@ -29,6 +45,7 @@ interface Props {
       siteMetadata: { title: string; author: string; bio: string };
     };
     profilePic: any;
+    allMarkdownRemark: any;
   };
 }
 
@@ -38,33 +55,28 @@ const BlogIndex: React.FC<Props> = ({
       siteMetadata: { title, author, bio },
     },
     profilePic,
+    allMarkdownRemark: { edges: posts },
   },
 }) => (
   <Layout title={title} subtitle="Built with React and Gatsby">
     <SEO title="All Posts" lang="en" description="An list of all posts" />
     <div className="blog-container">
       <section>
-        <div className="post-summary">
-          <p>May 4th, 2019</p>
-          <h2>Cheddar cheese and biscuits</h2>
-          <p>
-            Cheese and wine rubber cheese airedale cottage cheese the big cheese
-            stinking bishop cheesecake st. agur blue cheese. Cow rubber cheese
-            cheese triangles say cheese cheese on toast cheddar red leicester
-            swiss.{' '}
-          </p>
-          <button>Read more</button>
-        </div>
-        <div className="post-summary">
-          <p>May 13th, 2019</p>
-          <h2>Cheese on toast babybel babybel</h2>
-          <p>
-            Pecorino fondue manchego who moved my cheese babybel hard cheese
-            fromage roquefort. Roquefort port-salut cheeseburger cheese on toast
-            jarlsberg red leicester chalk and cheese fromage.
-          </p>
-          <button>Read more</button>
-        </div>
+        {posts.map(({ node: post }: { node: any }) => (
+          <div className="post-summary" key={post.fields.slug}>
+            <p>{post.frontmatter.date}</p>
+            <h2>{post.frontmatter.title}</h2>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{
+                __html: post.html.slice(0, 300).trim() + '...',
+              }}
+            />
+            <Link to={post.fields.slug}>
+              <button>Read more</button>
+            </Link>
+          </div>
+        ))}
       </section>
       <aside>
         <Image fluid={profilePic.childImageSharp.fluid} alt={author} />
