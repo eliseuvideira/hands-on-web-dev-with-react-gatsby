@@ -37,6 +37,7 @@ module.exports = {
               maxWidth: 600,
             },
           },
+          'gatsby-remark-responsive-iframe',
         ],
       },
     },
